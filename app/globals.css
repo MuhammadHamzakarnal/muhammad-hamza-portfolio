@@ -2917,3 +2917,53 @@ input, textarea { font-family: inherit; }
 .reveal-d4 { transition-delay: 0.32s; }
 .reveal-d5 { transition-delay: 0.4s; }
 .reveal-d6 { transition-delay: 0.48s; }
+
+/* ============================================================
+   RESPONSIVE REFINEMENTS
+   Tightens spacing and prevents overflow on tablet / phone.
+   Layered after the component rules so it overrides cleanly.
+   ============================================================ */
+
+/* Tablet — trim oversized section rhythm */
+@media (max-width: 900px) {
+  .section { padding: 88px 0; }
+  .footer { margin-top: 56px; }
+}
+
+/* Phone — tighter rhythm + readable headings */
+@media (max-width: 600px) {
+  .section { padding: 64px 0; }
+  .lead { font-size: 16px; margin-bottom: 40px; }
+  .h-section { margin-bottom: 16px; }
+  .about-bio p,
+  .hero-desc-left { font-size: 16px; }
+
+  /* Avatar badge can hang off-screen at -16px on small viewports */
+  .avatar-badge { bottom: -12px; right: 0; font-size: 10px; padding: 10px 14px; }
+}
+
+/* Profile card — its code body uses white-space:nowrap and the card
+   clips overflow, so shrink the type on narrow screens to keep all
+   lines visible instead of cut off. */
+@media (max-width: 480px) {
+  .pc-code { font-size: 11px; padding: 16px 12px 18px 4px; }
+  .pc-code-line .ln { width: 22px; padding-right: 8px; font-size: 10px; }
+  .pc-body { padding: 18px; }
+  .pc-cta { margin: 14px; padding: 12px 14px; }
+  /* Long email was overflowing past the arrow — allow it to break/scale */
+  .pc-cta-email { font-size: 12px; word-break: break-all; line-height: 1.3; }
+  .pc-cta-arrow { font-size: 18px; flex-shrink: 0; }
+}
+
+/* Bento — 2 columns gets cramped on small phones; go single-column */
+@media (max-width: 560px) {
+  .bento { grid-template-columns: 1fr; }
+  .bento-tile { grid-column: span 1 !important; }
+}
+
+/* Globe — keep the fixed-size canvas from touching the screen edges
+   on the very narrowest devices */
+@media (max-width: 360px) {
+  .globe-canvas { max-width: 100%; height: auto; }
+  .globe-card-body { padding: 12px 8px 8px; }
+}

@@ -46,7 +46,7 @@ function applyPalette(p: typeof PALETTES[number]) {
   document.body.dataset.shine = (p as any).shine ?? "";
 }
 
-const DEFAULT_PALETTE = "midnight";
+const DEFAULT_PALETTE = "navy";
 
 export default function PaletteSwitcher() {
   const [active, setActive] = useState(DEFAULT_PALETTE);

@@ -38,7 +38,7 @@ export default function About() {
                 I&apos;m a <strong>full-stack developer based in Karachi</strong> with <strong>2+ years of coding</strong> behind me. I&apos;ve built real projects along the way — from a complete POS system to e-commerce stores and Python tools.
               </p>
               <p>
-                Right now I&apos;m wrapping up a <strong>3-month internship</strong> and doing my <strong>Intermediate from the Karachi Board</strong>. I work end-to-end — Next.js frontends, Express &amp; Python backends, and databases like MySQL and Sanity — and I care about clean, responsive interfaces and code I can actually read later.
+                Right now I&apos;m <strong>5 months into a full-time job</strong> and doing my <strong>Intermediate from the Karachi Board</strong>. I work end-to-end — Next.js frontends, Express &amp; Python backends, and databases like MySQL and Sanity — and I care about clean, responsive interfaces and code I can actually read later.
               </p>
             </div>
 
@@ -53,7 +53,7 @@ export default function About() {
               </div>
               <div className="meta-card">
                 <div className="meta-label">Currently</div>
-                <div className="meta-value">Internship (finishing)</div>
+                <div className="meta-value">Job (5 months)</div>
               </div>
               <div className="meta-card">
                 <div className="meta-label">Status</div>

@@ -31,7 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body
-        data-palette="midnight"
+        data-palette="navy"
         data-shine="metal"
         className={`${display.variable} ${body.variable} ${mono.variable}`}
       >
