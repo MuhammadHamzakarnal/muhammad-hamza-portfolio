@@ -55,7 +55,7 @@ export default function PaletteSwitcher() {
   // Restore a previously chosen palette (if any) on mount.
   useEffect(() => {
     try {
-      const saved = localStorage.getItem("palette");
+      const saved = localStorage.getItem("palette-v2");
       if (saved && PALETTES.some((p) => p.id === saved)) setActive(saved);
     } catch {}
   }, []);
@@ -63,7 +63,7 @@ export default function PaletteSwitcher() {
   useEffect(() => {
     const p = PALETTES.find((x) => x.id === active);
     if (p) applyPalette(p);
-    try { localStorage.setItem("palette", active); } catch {}
+    try { localStorage.setItem("palette-v2", active); } catch {}
   }, [active]);
 
   return (

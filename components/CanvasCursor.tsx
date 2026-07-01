@@ -7,6 +7,9 @@ export default function CanvasCursor() {
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // Cursor trails make no sense on touch devices — skip entirely to avoid
+    // touchmove particle spam and per-frame DOM reads that jank mobile scroll.
+    if (window.matchMedia("(pointer: coarse)").matches) return;
     const canvas = ref.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
@@ -47,13 +50,12 @@ export default function CanvasCursor() {
       vy = -0.4 + Math.random() * -1;
       x: number; y: number; base = 4;
       constructor(x: number, y: number) { this.x = x; this.y = y; }
-      update() {
+      update(c: { fill: string; stroke: string }) {
         this.x += this.vx; this.y += this.vy;
         this.vx += ((Math.random() < 0.5 ? -1 : 1) * 2) / 75;
         this.vy -= Math.random() / 600;
         this.life--;
         const scale = 0.2 + (this.initialLife - this.life) / this.initialLife;
-        const c = getColors();
         ctx!.fillStyle = c.fill;
         ctx!.strokeStyle = c.stroke;
         ctx!.lineWidth = 1;
@@ -76,7 +78,8 @@ export default function CanvasCursor() {
     let raf = 0;
     const loop = () => {
       ctx.clearRect(0, 0, W, H);
-      for (const p of particles) p.update();
+      const c = getColors();
+      for (const p of particles) p.update(c);
       for (let i = particles.length - 1; i >= 0; i--) {
         if (particles[i].life < 0) particles.splice(i, 1);
       }

@@ -32,7 +32,12 @@ export default function Particles() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const dpr = window.devicePixelRatio || 1;
+    // Respect reduced-motion; lighten the load massively on phones.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const coarse = window.matchMedia("(pointer: coarse)").matches;
+
+    // Cap DPR so high-density phone screens don't render a 3x-sized canvas.
+    const dpr = Math.min(window.devicePixelRatio || 1, coarse ? 1.5 : 2);
     let W = 0, H = 0, R = 0;
     let BASE: Pt3[] = [];
 
@@ -49,9 +54,10 @@ export default function Particles() {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       R    = Math.min(Math.min(W, H) * 0.28, 230);
-      BASE = fibSphere(180, R);
+      // Sphere link work is O(n²) per frame — halve the points on phones.
+      BASE = fibSphere(coarse ? 90 : 180, R);
 
-      const COUNT = Math.min(80, Math.floor((W * H) / 18000));
+      const COUNT = Math.min(coarse ? 32 : 80, Math.floor((W * H) / 18000));
       bgDots = [];
       for (let i = 0; i < COUNT; i++) {
         bgDots.push({
