@@ -59,7 +59,7 @@ export default function Skills() {
             <div className="tile-title">Backend &amp; APIs</div>
             <div className="tile-desc">Learning the server side — building APIs and auth, with Python and the Next.js backend.</div>
             <div className="chip-grid">
-              {["Python","uv (pkg manager)","Next.js Backend","Express.js","JWT Auth","Streamlit"].map(c => (
+              {["Node.js","Python","uv (pkg manager)","Next.js Backend","Express.js","JWT Auth","Streamlit"].map(c => (
                 <span key={c} className="chip violet"><span className="lvl"></span>{c}</span>
               ))}
             </div>
@@ -89,7 +89,7 @@ export default function Skills() {
             <div className="tile-head"><div className="tile-icon">{ICON.tools}</div><div className="tile-num">05 / Toolkit</div></div>
             <div className="tile-title">Daily Tools</div>
             <div className="chip-grid">
-              {["Git","GitHub","VS Code","Vercel"].map(c => (
+              {["Git","GitHub","VS Code","Vercel","Railway","cPanel"].map(c => (
                 <span key={c} className="chip"><span className="lvl"></span>{c}</span>
               ))}
             </div>
