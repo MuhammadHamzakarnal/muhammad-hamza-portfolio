@@ -45,6 +45,11 @@ body {
     radial-gradient(ellipse 60% 50% at 100% 30%, rgba(167, 139, 250, 0.06), transparent 60%);
   background-attachment: fixed;
 }
+/* background-attachment:fixed repaints every scroll frame on mobile — a major
+   source of scroll jank. Fall back to a scrolling background on touch devices. */
+@media (hover: none), (max-width: 760px) {
+  body { background-attachment: scroll; }
+}
 
 #cursor-canvas {
   position: fixed;
